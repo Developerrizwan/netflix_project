@@ -34,16 +34,7 @@
 .navbar-left ul li {
     cursor: pointer;
     color: #e5e5e5;
-    transition: color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effect */
 }
-
-.navbar-left ul li:hover {
-    color: #1db954;  /* Change the color when hovering */
-    transform: scale(1.1);
-    text-decoration: underline; /* Slightly enlarges the text on hover */
-}
-
-
 
 
 /*NavBar Right Session */
@@ -62,6 +53,10 @@
 .navbar-right .profile{
     border-radius: 4px;
     width: 35px;
+}
+
+.navbar-right p{
+    cursor: pointer;
 }
 
 .navbar-profile {
@@ -93,7 +88,9 @@
 
 .navbar .dropdown p{
     cursor: pointer;
-    font-size: 13;
-    font-style: italic;
+    font-size: 13px;
 }
 
+.nav-dark{
+    background: #141414;
+}
