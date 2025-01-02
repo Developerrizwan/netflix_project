@@ -1,6 +1,11 @@
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { 
+   createUserWithEmailAndPassword, 
+   getAuth, 
+   signInWithEmailAndPassword, 
+   signOut} from "firebase/auth";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCId00VTVDu9A4bBO5Vwpnc7HScUzOiSAY",
@@ -31,12 +36,32 @@ const signup = async (name, email, password) => {
           uid: user.uid,   //Defining Dtas which need top store in the user collection //
           name,
           authProvider: "local",
-          email
+          email,
+        
 
         });
     } catch (error) {
         console.log(error);
-        alert(error);
+        toast.error(error.code.split('/')[1].split('-').join(" "));
     }
 }
 
+// LOGIN SESSION ///
+
+const login = async (email,password) => {
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    console.log(error);
+    toast.error(error.code.split('/')[1].split('-').join(" "));
+  }
+}
+
+//--------Logout session---------//
+
+const logout = () => {
+  signOut(auth)
+
+}
+
+export {auth, db, login, signup, logout};
